@@ -5,18 +5,19 @@ import { Link } from 'react-router-dom';
 import useInput from '@hooks/useInput';
 
 const SignUp = (): JSX.Element => {
-  const [email, setEmail] = useState('');
-  const [nickName, setNickName] = useState('');
+  const [email, onChangeEmail] = useInput<string>('');
+  const [nickName, onChangeNickName] = useInput<string>('');
+
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [mismatchError, setMismatchError] = useState<boolean>(false);
 
-  const onChangeEmail = useCallback((evt) => {
-    setEmail(evt.target.value);
-  }, []);
-  const onChangeNickName = useCallback((evt) => {
-    setNickName(evt.target.value);
-  }, []);
+  // const onChangeEmail = useCallback((evt) => {
+  //   setEmail(evt.target.value);
+  // }, []);
+  // const onChangeNickName = useCallback((evt) => {
+  //   setNickName(evt.target.value);
+  // }, []);
   const onChangePassword = useCallback(
     (evt) => {
       setPassword(evt.target.value);
