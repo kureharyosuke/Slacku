@@ -10,7 +10,7 @@ const SignUp = () => {
   const onChangeEmail = useCallback((evt) => { setEmail(evt.target.value) }, []);
   const onChangeNickName = useCallback((evt) => { setNickName(evt.target.value) }, []);
   const onChangePassword = useCallback((evt) => { setPassword(evt.target.value) }, []);
-  const onChangePasswordCheck = useCallback((evt) => { evt.target.value }, []);
+  const onChangePasswordCheck = useCallback((evt) => { setPasswordCheck(evt.target.value) }, []);
   const onSubmit = useCallback((evt) => {
     evt.preventDefault()
     console.log(email, nickName, password, passwordCheck)
