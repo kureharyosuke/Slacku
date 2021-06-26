@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 // import Login from '@pages/Login'
 // import SignUp from '@pages/SignUp'
 const Login = loadable(() => import('@pages/Login')) // next dynamic import ?
-const SignUp = loadable(() => import('@pages/Signup'))
+const SignUp = loadable(() => import('@pages/SignUp'))
 
 const App = () => {
   return (
