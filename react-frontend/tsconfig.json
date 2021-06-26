@@ -11,10 +11,10 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@hooks/*": ["hooks/*"],
-      "@components/*": ["components/*"],
-      "@layouts/*": ["layouts/*"],
-      "@pages/*": ["pages/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/pages/layouts/*"],
+      "@pages/*": ["src/pages/*"],
       "@utils/*": ["utils/*"],
       "@typings/*": ["typings/*"]
     } // 절대경로를 짧게 만드는 설정

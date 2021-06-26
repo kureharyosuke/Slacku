@@ -1,6 +1,8 @@
 import React, { useState, useCallback, VFC } from 'react';
 import { Form, Label, Error, Input, LinkContainer, Button, Header } from './styles';
 import { Link } from 'react-router-dom';
+// import useInput from '../../hooks/useInput';
+import useInput from '@hooks/useInput';
 
 const SignUp = (): JSX.Element => {
   const [email, setEmail] = useState('');
