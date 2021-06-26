@@ -5,7 +5,7 @@ type ReturnTypes<T = string> = [T, (evt: ChangeEvent<HTMLInputElement>) => void,
 const useInput = <T = string>(initialData: T): ReturnTypes<T> => {
   const [value, setValue] = useState(initialData);
   const handler = useCallback((e) => {
-    setValue(e.target.value);
+    setValue(e.target.value as unknown as T);
   }, []);
 
   return [value, handler, setValue];
