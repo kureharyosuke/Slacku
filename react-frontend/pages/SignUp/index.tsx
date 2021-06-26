@@ -8,8 +8,8 @@ export const SignUp = () => {
 }
 
 
-export default function SignUp2() {
-  return (
-    <div>회원가입</div>
-  )
-}
+// export default function SignUp2() {
+//   return (
+//     <div>회원가입</div>
+//   )
+// }
