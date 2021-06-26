@@ -81,13 +81,14 @@ const config: Configuration = {
     // 사기쳐주는 애, History가 기억한다.
     port: 3090,
     publicPath: '/dist/',
-    //   proxy: {
-    //     '/api/': {
-    //       target: 'http://localhost:3095',
-    //       changeOrigin: true,
-    //       ws: true,
-    //     },
-    //   },
+    // proxy setting => cors 문제 피해갈수 있게, 웹팩데브서버가 같은 호스트에서 보낸것처럼 함.
+    proxy: {
+      '/api/': {
+        target: 'http://localhost:3095',
+        changeOrigin: true,
+        ws: true,
+      },
+    },
   },
 };
 
