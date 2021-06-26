@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Form, Label, Input, LinkContainer, Button, Header } from './styles';
+import { Form, Label, Error, Input, LinkContainer, Button, Header } from './styles';
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
@@ -7,14 +7,38 @@ const SignUp = () => {
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
-  const onChangeEmail = useCallback((evt) => { setEmail(evt.target.value) }, []);
-  const onChangeNickName = useCallback((evt) => { setNickName(evt.target.value) }, []);
-  const onChangePassword = useCallback((evt) => { setPassword(evt.target.value) }, []);
-  const onChangePasswordCheck = useCallback((evt) => { setPasswordCheck(evt.target.value) }, []);
-  const onSubmit = useCallback((evt) => {
-    evt.preventDefault()
-    console.log(email, nickName, password, passwordCheck)
-  }, [email, nickName, password, passwordCheck]);
+  const [mismatchError, setMismatchError] = useState<boolean>(false);
+
+  const onChangeEmail = useCallback((evt) => {
+    setEmail(evt.target.value);
+  }, []);
+  const onChangeNickName = useCallback((evt) => {
+    setNickName(evt.target.value);
+  }, []);
+  const onChangePassword = useCallback(
+    (evt) => {
+      setPassword(evt.target.value);
+      setMismatchError(evt.target.value !== passwordCheck);
+    },
+    [passwordCheck],
+  );
+  const onChangePasswordCheck = useCallback(
+    (evt) => {
+      setPasswordCheck(evt.target.value);
+      setMismatchError(evt.target.value !== password);
+    },
+    [password],
+  );
+  const onSubmit = useCallback(
+    (evt) => {
+      evt.preventDefault();
+      console.log(email, nickName, password, passwordCheck);
+      if (!mismatchError) {
+        console.log('서버로 회원가입 하기');
+      }
+    },
+    [email, nickName, password, passwordCheck, mismatchError],
+  );
 
   return (
     <div id="container">
@@ -49,6 +73,9 @@ const SignUp = () => {
               onChange={onChangePasswordCheck}
             />
           </div>
+          {!email && <Error>이메일을 입력하지 않았습니다. </Error>}
+          {!nickName && <Error>닉네임을 입력하지 않았습니다.</Error>}
+          {mismatchError && <Error>비밀번호가 일치하지 않습니다.</Error>}
         </Label>
         <Button type="submit">회원가입</Button>
       </Form>
@@ -64,7 +91,8 @@ export default SignUp;
 
 // export default function SignUp2() {
 //    return (
-{/* <div id="container">
+{
+  /* <div id="container">
   <Header>Sleaku</Header>
   <Form onSubmit={onSubmit}>
     <Label id="email-label">
@@ -104,5 +132,6 @@ export default SignUp;
     <Link to="/login">로그인하기</Link>
   </LinkContainer>
 </div>
-  ); */}
+  ); */
+}
 // }
