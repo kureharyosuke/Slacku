@@ -12,6 +12,8 @@ const SignUp = (): JSX.Element => {
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [mismatchError, setMismatchError] = useState<boolean>(false);
+  // 서버보내주는 에러
+  const [signUpError, setSignUpError] = useState<boolean>(false);
 
   // const onChangeEmail = useCallback((evt) => {
   //   setEmail(evt.target.value);
@@ -40,7 +42,7 @@ const SignUp = (): JSX.Element => {
       if (!mismatchError) {
         console.log('서버로 회원가입 하기');
         axios
-          .post('http://localhost:3095/api/users', {
+          .post('/api/users', {
             email,
             nickname,
             password,
@@ -50,6 +52,7 @@ const SignUp = (): JSX.Element => {
           })
           .catch((error) => {
             console.log(error.response);
+            setSignUpError(true);
           })
           .finally(() => {});
       }
@@ -96,6 +99,7 @@ const SignUp = (): JSX.Element => {
           {!email && <Error>이메일을 입력하지 않았습니다. </Error>}
           {!nickname && <Error>닉네임을 입력하지 않았습니다.</Error>}
           {mismatchError && <Error>비밀번호가 일치하지 않습니다.</Error>}
+          {signUpError && <Error>이미 가입된 메일입니다.</Error>}
         </Label>
         <Button type="submit">회원가입</Button>
       </Form>
