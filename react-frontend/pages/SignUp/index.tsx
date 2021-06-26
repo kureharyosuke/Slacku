@@ -1,11 +1,13 @@
 import React from 'react'
 
 
-export const SignUp = () => {
+const SignUp = () => {
   return (
     <div>회원가입</div>
   )
 }
+
+export default SignUp;
 
 
 // export default function SignUp2() {

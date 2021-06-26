@@ -7,7 +7,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 const Login = loadable(() => import('@pages/Login')) // next dynamic import ?
 const SignUp = loadable(() => import('@pages/SignUp'))
 
-const App = () => {
+const App: Function = () => {
   return (
     <Switch>
       <Redirect exact path='/' to='/login' />
