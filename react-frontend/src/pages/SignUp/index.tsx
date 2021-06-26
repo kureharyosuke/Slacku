@@ -7,7 +7,7 @@ import useInput from '@hooks/useInput';
 
 const SignUp = (): JSX.Element => {
   const [email, onChangeEmail] = useInput<string>('');
-  const [nickName, onChangeNickName] = useInput<string>('');
+  const [nickname, onChangeNickname] = useInput<string>('');
 
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
@@ -16,7 +16,7 @@ const SignUp = (): JSX.Element => {
   // const onChangeEmail = useCallback((evt) => {
   //   setEmail(evt.target.value);
   // }, []);
-  // const onChangeNickName = useCallback((evt) => {
+  // const onChangeNickname = useCallback((evt) => {
   //   setNickName(evt.target.value);
   // }, []);
   const onChangePassword = useCallback(
@@ -36,13 +36,13 @@ const SignUp = (): JSX.Element => {
   const onSubmit = useCallback(
     (evt) => {
       evt.preventDefault();
-      console.log(email, nickName, password, passwordCheck);
+      console.log(email, nickname, password, passwordCheck);
       if (!mismatchError) {
         console.log('서버로 회원가입 하기');
         axios
           .post('http://localhost:3095/api/users', {
             email,
-            nickName,
+            nickname,
             password,
           })
           .then((response) => {
@@ -57,7 +57,7 @@ const SignUp = (): JSX.Element => {
 
       // } finally {}
     },
-    [email, nickName, password, passwordCheck, mismatchError],
+    [email, nickname, password, passwordCheck, mismatchError],
   );
 
   return (
@@ -73,7 +73,7 @@ const SignUp = (): JSX.Element => {
         <Label id="nickname-label">
           <span>닉네임</span>
           <div>
-            <Input type="text" id="nickname" value={nickName} onChange={onChangeNickName} />
+            <Input type="text" id="nickname" value={nickname} onChange={onChangeNickname} />
           </div>
         </Label>
         <Label id="password-label">
@@ -94,7 +94,7 @@ const SignUp = (): JSX.Element => {
             />
           </div>
           {!email && <Error>이메일을 입력하지 않았습니다. </Error>}
-          {!nickName && <Error>닉네임을 입력하지 않았습니다.</Error>}
+          {!nickname && <Error>닉네임을 입력하지 않았습니다.</Error>}
           {mismatchError && <Error>비밀번호가 일치하지 않습니다.</Error>}
         </Label>
         <Button type="submit">회원가입</Button>
@@ -123,7 +123,7 @@ export default SignUp;
 //         <Label id="nickname-label">
 //           <span>닉네임</span>
 //           <div>
-//             <Input type="text" id="nickname" vlaue={nickName} onChange={onChangeNickName} />
+//             <Input type="text" id="nickname" vlaue={nickname} onChange={onChangeNickname} />
 //           </div>
 //         </Label>
 //         <Label id="password-label">
