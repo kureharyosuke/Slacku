@@ -17,16 +17,16 @@ const config: Configuration = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
-      '@hooks': path.resolve(__dirname, 'hooks'),
-      '@components': path.resolve(__dirname, 'components'),
-      '@layouts': path.resolve(__dirname, 'layouts'),
-      '@pages': path.resolve(__dirname, 'pages'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@layouts': path.resolve(__dirname, 'src/layouts'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
       '@utils': path.resolve(__dirname, 'utils'),
       '@typings': path.resolve(__dirname, 'typings'),
     },
   },
   entry: {
-    app: './client',
+    app: './src/client',
   },
   target: ['web', 'es5'],
   module: {
